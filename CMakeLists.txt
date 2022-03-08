@@ -3,4 +3,4 @@ project(CPUProcess)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(CPUProcess main.cpp)
+add_executable(CPUProcess main.cpp Queue.cpp Queue.h CPU.cpp CPU.h)
