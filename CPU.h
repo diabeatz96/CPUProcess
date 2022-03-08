@@ -8,6 +8,8 @@
 
 class CPU {
 
+    int currTime;
+
 };
 
 
