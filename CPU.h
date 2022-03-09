@@ -9,11 +9,11 @@
 
 class CPU {
 
+
+public:
     int currTime;
     int avgTime;
-    Queue CPU;
-
-
+    Queue instructions = Queue(50);
 };
 
 

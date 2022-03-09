@@ -10,7 +10,7 @@
  * Constructor functions for que, simple values for creating queue
  * Manipulating values for queues kept simple with basic constructior.
  */
-Queue::Queue(int head, int tail, int maxSize, int count, const vector<Process> &cpu) : head(head), tail(tail),
+Queue::Queue(int head, int tail, int maxSize, int count, const vector<Process*> &cpu) : head(head), tail(tail),
                                                                                        maxSize(maxSize), count(count),
                                                                                        CPU(cpu) {}
 Queue::Queue(int maxSize) : maxSize(maxSize) {
@@ -29,7 +29,7 @@ void Queue::Enqueue(Process *process) {
 
 bool Queue::Dequeue() {
     if(count == 0) {
-        cout << "Queue is empty";
+        cout << "CPU HAS FINISHED PROCESSING";
         return false;
     }
     head = (head + 1) % maxSize;
@@ -46,7 +46,9 @@ void Queue::loadFile() {
     int line;
     inFile.open("cpu.txt"); //Absolute path for now cause im bad.
 
-    /* Check if file is open, then we check if head is nullptr, if its not nullptr then do normal functionality
+    /* Check if file is open,
+     * if it is open, we work and analyze the values of each line, selecting the values then
+     * processing the value at front.
      * */
 
 
@@ -65,4 +67,13 @@ void Queue::loadFile() {
         cout << "File input is not working!";
     }
     inFile.close();
+}
+
+/**
+ * Helper Method to show if input was correct, it is huzzah! :)
+ */
+void Queue::print() {
+    for(int i = 0; i < maxSize; i++) {
+        cout << CPU[i]->ID << "  " << CPU[i]->arriveTime << "  " << CPU[i]->serviceTime << endl;
+    }
 }
