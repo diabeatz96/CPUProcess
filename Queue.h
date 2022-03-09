@@ -16,9 +16,16 @@ private:
     int tail = 0;
     int maxSize = 0;
     int count = 0;
+    vector<Process> CPU;
 
 public:
-    void Enqueue(Process process);
+    void Enqueue(Process *process);
+    bool Dequeue();
+    bool isEmpty();
+    void loadFile();
+
+    Queue(int head, int tail, int maxSize, int count, const vector<Process> &cpu);
+    explicit Queue(int maxSize);
 
 };
 
