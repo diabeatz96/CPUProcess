@@ -3,17 +3,25 @@
 //
 
 #include "Queue.h"
+#include <Windows.h>
+
+
 #ifndef CPUPROCESS_CPU_H
 #define CPUPROCESS_CPU_H
 
+#include "iostream"
+#include "unistd.h"
+using namespace std;
 
 class CPU {
 
 
 public:
-    int currTime;
-    int avgTime;
-    Queue instructions = Queue(50);
+    int totalTime = 0;
+    double waitTime = 0;
+    Queue instructions = Queue();
+
+    void processInstructions();
 };
 
 

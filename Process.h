@@ -9,7 +9,7 @@ using namespace std;
 #ifndef CPUPROCESS_PROCESS_H
 #define CPUPROCESS_PROCESS_H
 
-class Process{
+class Process {
 
 public:
 

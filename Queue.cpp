@@ -17,6 +17,8 @@ Queue::Queue(int maxSize) : maxSize(maxSize) {
     CPU.resize(maxSize);
 }
 
+Queue::Queue() = default;
+
 void Queue::Enqueue(Process *process) {
     if(count == maxSize) {
         cout << "CPU has reached it's max size.";
@@ -53,6 +55,9 @@ void Queue::loadFile() {
 
 
     if (inFile.is_open()) {
+        inFile >> line;
+        maxSize = line;
+        CPU.resize(maxSize);
         while (inFile >> line) {
             auto *newProcess = new Process();
             newProcess->setId(line);
@@ -69,11 +74,36 @@ void Queue::loadFile() {
     inFile.close();
 }
 
+void processInstructions() {
+
+}
+
 /**
  * Helper Method to show if input was correct, it is huzzah! :)
  */
+
 void Queue::print() {
     for(int i = 0; i < maxSize; i++) {
         cout << CPU[i]->ID << "  " << CPU[i]->arriveTime << "  " << CPU[i]->serviceTime << endl;
     }
+}
+
+int Queue::getMaxSize() const {
+    return maxSize;
+}
+
+int Queue::getCount() const {
+    return count;
+}
+
+const vector<Process *> &Queue::getCpu() const {
+    return CPU;
+}
+
+void Queue::setCpu(const vector<Process *> &cpu) {
+    CPU = cpu;
+}
+
+int Queue::getHead() const {
+    return head;
 }
